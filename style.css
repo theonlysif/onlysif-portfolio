@@ -58,6 +58,17 @@ h2 {
   margin-bottom: 16px;
 }
 
+.music-note {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.music iframe {
+  display: block;
+  color-scheme: normal;
+}
+
 .work ul {
   list-style: none;
 }
