@@ -170,3 +170,22 @@ a {
   outline: none;
   border-bottom-color: #111;
 }
+
+/* scroll reveal: units rest dimmed and step to full opacity once revealed */
+.reveal-unit {
+  opacity: 0.2;
+}
+
+.reveal-unit.is-in {
+  opacity: 1;
+}
+
+.reveal-ready .reveal-unit {
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-unit {
+    opacity: 1;
+  }
+}
