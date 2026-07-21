@@ -22,6 +22,15 @@ main {
   margin: 0 auto;
 }
 
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 14px;
+}
+
 h1 {
   font-size: 1rem;
   font-weight: 400;
@@ -187,5 +196,19 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .reveal-unit {
     opacity: 1;
+  }
+}
+
+/* stack the ask form on narrow screens so the send button never overflows */
+@media (max-width: 480px) {
+  .ask-form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ask-input {
+    flex: none;
+    width: 100%;
   }
 }
