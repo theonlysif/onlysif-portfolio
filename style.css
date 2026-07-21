@@ -109,3 +109,64 @@ a {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+.ask-line {
+  margin-top: 16px;
+}
+
+.ask-toggle,
+.ask-send {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: #333;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ask-toggle:hover,
+.ask-send:hover {
+  color: #111;
+}
+
+.ask-form {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.ask-form[hidden] {
+  display: none;
+}
+
+.ask-form + p {
+  margin-top: 16px;
+}
+
+.ask-input {
+  flex: 1 1 240px;
+  min-width: 0;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: #111;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 4px 0;
+}
+
+.ask-input::placeholder {
+  color: #aaa;
+}
+
+.ask-input:focus {
+  outline: none;
+  border-bottom-color: #111;
+}
