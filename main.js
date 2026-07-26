@@ -22,7 +22,7 @@ if (toggle && form && input) {
 
     const subject = `send me a random hyperlink about ${topic}`;
     const body =
-      `hey asif — send me a random hyperlink from your list about ${topic}, please.\n\n` +
+      `hey asif - send me a random hyperlink from your list about ${topic}, please.\n\n` +
       `(sent from sif.fyi)`;
     const compose =
       'https://mail.google.com/mail/?view=cm&fs=1&to=hi@sif.fyi' +
@@ -35,7 +35,7 @@ if (toggle && form && input) {
 
 // scroll reveal: each sentence (or SET_SIZE of them) stays dimmed until it
 // scrolls up into view, then fades in to full opacity in one step and stays
-// lit — a discrete, one-at-a-time reveal, not a continuous scroll-linked ramp.
+// lit - a discrete, one-at-a-time reveal, not a continuous scroll-linked ramp.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // group each prose paragraph into .reveal-unit spans of SET_SIZE sentences,
@@ -54,7 +54,7 @@ function wrapSentences(paragraph) {
         atoms.push({ text, endsSentence: ENDS_SENTENCE.test(text) });
       }
     } else {
-      // inline element (e.g. a link) — always mid-sentence in this copy
+      // inline element (e.g. a link) - always mid-sentence in this copy
       atoms.push({ node: node.cloneNode(true), endsSentence: false });
     }
   }
