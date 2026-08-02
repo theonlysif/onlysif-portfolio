@@ -71,9 +71,40 @@
     .mhead u { flex: 1; text-decoration: none; font-size: 10px; color: #ccc; }
     .mhead { margin-bottom: 6px; }
 
+    .hit { cursor: pointer; }
+    .river path.hit:hover { fill: #c07d20 !important; }
+    .key li.hit:hover, .mrow.hit:hover > span { color: #111; }
+
+    /* --- panel --- */
+    #panel {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 540px; max-width: 94vw;
+      background: #fff; border-left: 1px solid #eee; padding: 72px 40px 100px;
+      overflow-y: auto; z-index: 50; transform: translateX(101%);
+      transition: transform .2s cubic-bezier(.4,0,.2,1);
+    }
+    #panel.open { transform: none; }
+    #close {
+      position: absolute; top: 26px; right: 40px; background: none; border: 0;
+      font: inherit; font-size: 0.8rem; color: #888; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 2px; padding: 0;
+    }
+    #close:hover { color: #111; }
+    #panel h2 { font-size: 1.05rem; font-weight: 400; margin-bottom: 3px; }
+    .pmeta { font-size: 0.8rem; color: #aaa; margin-bottom: 32px; }
+    .ann { margin-bottom: 26px; }
+    .ann q { quotes: none; display: block; font-size: 0.9rem; line-height: 1.65; color: #333; }
+    .mine {
+      margin-top: 9px; padding-left: 14px; border-left: 1px solid #c07d20;
+      white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; color: #111;
+    }
+    .src { margin-top: 7px; font-size: 0.75rem; color: #bbb; }
+    .src a { color: #bbb; }
+    .src a:hover { color: #888; }
+
     @media (max-width: 720px) {
       .mrow { grid-template-columns: 108px 1fr; }
       .key { columns: 2; }
+      #panel { padding: 64px 24px 80px; }
     }
   </style>
 </head>
@@ -87,6 +118,7 @@
     <section>
       <p>i save almost everything i read — articles, newsletters, books, tweets — and highlight the parts that land. this is four years of that, clustered into themes and plotted against time.</p>
       <p>the shapes are the point. a theme that spikes once was a weekend rabbit hole. one that keeps returning is something i'm actually circling. amber marks the months i stopped to write something of my own, which turns out to be much rarer than highlighting.</p>
+      <p>click any theme to read what's underneath it — the highlights, and the notes i wrote in the margin.</p>
     </section>
 
     <div class="switch">
@@ -102,6 +134,7 @@
       <a href="https://x.com/theonlysif" target="_blank">@theonlysif</a>
     </footer>
   </main>
+  <aside id="panel" aria-live="polite"></aside>
   <script src="/reading/reading.js"></script>
 </body>
 </html>
