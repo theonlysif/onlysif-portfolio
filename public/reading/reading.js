@@ -27,14 +27,53 @@ function boot() {
 
 function render() {
   document.getElementById("legend").textContent = VIEWS[view].legend;
-  document.getElementById("stage").innerHTML = VIEWS[view].draw();
+  const stage = document.getElementById("stage");
+  stage.innerHTML = VIEWS[view].draw();
+  stage.querySelectorAll("[data-id]").forEach(el => {
+    el.classList.add("hit");
+    el.onclick = () => openTheme(atlas.themes.find(t => t.id === +el.dataset.id));
+  });
+}
+
+/* Clicking a theme opens what is actually behind it. Notes I wrote come
+   first — they are the only part of this that is mine rather than quoted. */
+function openTheme(t) {
+  const panel = document.getElementById("panel");
+  const withNote = t.members.filter(m => m.note);
+  const plain = t.members.filter(m => !m.note);
+  panel.innerHTML = `
+    <button id="close" aria-label="close">close</button>
+    <h2>${esc(t.label)}</h2>
+    <p class="pmeta">${t.size} highlights · ${t.first_seen} – ${t.last_seen} · peak ${t.peak}${
+      t.shown < t.size ? ` · showing ${t.shown}` : ""}</p>
+    ${withNote.map(card).join("")}
+    ${plain.map(card).join("")}`;
+  panel.classList.add("open");
+  panel.scrollTop = 0;
+  panel.querySelector("#close").onclick = close;
+  document.addEventListener("keydown", onEsc);
+}
+
+function close() {
+  document.getElementById("panel").classList.remove("open");
+  document.removeEventListener("keydown", onEsc);
+}
+const onEsc = e => { if (e.key === "Escape") close(); };
+
+function card(m) {
+  return `<div class="ann">
+    <q>${esc(m.text)}</q>
+    ${m.note ? `<div class="mine">${esc(m.note)}</div>` : ""}
+    <p class="src">${m.at}${m.source_title ? " · " : ""}${
+      m.source_url ? `<a href="${esc(m.source_url)}" target="_blank" rel="noopener nofollow">${esc(m.source_title)}</a>`
+                   : esc(m.source_title)}</p></div>`;
 }
 
 const VIEWS = {};
 
 /* ---------------- river: a themeriver / streamgraph ---------------- */
 VIEWS.river = {
-  legend: "ribbon thickness = how much i highlighted that month · ordered by era",
+  legend: "ribbon thickness = how much i highlighted that month · click any band",
   draw() {
     const top = [...atlas.themes].sort((a, b) => b.weight - a.weight).slice(0, 24)
       .sort((a, b) => a.era - b.era);
@@ -85,7 +124,7 @@ VIEWS.river = {
       });
       const d = curve(upper) + curve([...lower].reverse(), false) + "Z";
       const s = shade(k);
-      return `<path d="${d}" fill="rgb(${s},${s},${s})"><title>${esc(t.label)}</title></path>`;
+      return `<path d="${d}" fill="rgb(${s},${s},${s})" data-id="${t.id}"><title>${esc(t.label)}</title></path>`;
     }).join("");
 
     const ticks = atlas.months.map((m, i) => m.endsWith("-01")
@@ -95,14 +134,14 @@ VIEWS.river = {
         aria-label="streamgraph of reading themes over time">${bands}${ticks}</svg>
       <ol class="key">${top.map((t, k) => {
         const s = shade(k);
-        return `<li><i style="background:rgb(${s},${s},${s})"></i>${esc(t.label)}</li>`;
+        return `<li data-id="${t.id}"><i style="background:rgb(${s},${s},${s})"></i>${esc(t.label)}</li>`;
       }).join("")}</ol>`;
   },
 };
 
 /* ---------------- matrix: every theme against every month ---------------- */
 VIEWS.matrix = {
-  legend: "darker = more highlights · amber = a month i wrote a note of my own",
+  legend: "darker = more highlights · amber = a month i wrote a note of my own · click any theme",
   draw() {
     const list = [...atlas.themes].sort((a, b) => a.era - b.era);
     const max = Math.max(...list.flatMap(t => Object.values(t.months)), 1);
@@ -121,7 +160,7 @@ VIEWS.matrix = {
         const cls = (notes.has(m) ? "n " : "") + (years[i] !== years[i - 1] ? "y" : "");
         return `<i class="${cls}" style="--a:${a.toFixed(3)}"></i>`;
       }).join("");
-      return `<div class="mrow"><span>${esc(t.label)}${
+      return `<div class="mrow" data-id="${t.id}"><span>${esc(t.label)}${
         t.note_months.length ? ` <em>✎</em>` : ""}</span><div class="cells">${cells}</div></div>`;
     }).join("")}</div>`;
   },
