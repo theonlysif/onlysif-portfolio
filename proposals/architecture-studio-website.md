@@ -2,7 +2,7 @@
 title: website
 client: "[studio name]"
 from: asif hassan
-date: "[date]"
+date: 4 august 2026
 valid: 14 days
 filename: asif-architecture-studio-website
 contact:
@@ -13,44 +13,35 @@ contact:
 
 ## what this is
 
-a full website for the studio - design, build, and the words on it. portfolio front and centre, your philosophy clear, and an obvious way for someone to reach you. responsive, quick to load, and matched to the brand you already have.
+a website for the studio, built from the design references you already have in mind. you send over project images and whatever notes exist on each one, and i write the copy and build it - no separate design phase, no figma files to sign off on before anything real exists.
 
 ## what i'll do
 
-- **design** - figma for six pages: home, projects index, a project detail template, about, services, contact. plus a small design system so it stays consistent when you add to it later
-- **words** - copy for every page, written from your notes and project images, structured for search without sounding like it was
-- **build** - next.js on vercel. motion where it earns its place, a contact form wired to your inbox, compressed images, analytics if you want them
-- **handoff** - staging link to review, code on github, a 30 minute walkthrough, and two weeks of bug fixes after launch
-
-two rounds of revisions per phase.
+- **build and content** - i work straight in code, off your references and the brand language you already have, writing the copy for each page around the projects you've done. six pages: home, projects index, a project page template, about, services, contact
+- **handoff** - a staging link to review while it's in progress, code on github that you own, and a handoff email with everything you need to keep it running. two weeks of bug fixes after launch
 
 ## timeline
 
-- discovery and content collection :: 3-4 days
-- wireframes and design :: 1 week
-- revisions and sign-off :: 3-4 days
+- projects, images, and references collected :: 2-3 days
 - build :: 1 week
-- content and testing :: 3-4 days
-- launch and handoff :: 2 days
-- **start to live** :: 4-5 weeks
+- revisions, sign-off, and launch :: 2-3 days
+- **start to live** :: 2 weeks
 
 ## what it costs
 
-- design, build, and copy :: inr 35,000
-- hosting on vercel :: included
-- domain, paid by you :: ~inr 800-2,000/yr
-- **total** :: inr 35,000
+- **build and content** :: inr 35,000
 
-half up front to start, half on handoff. i'll invoice at each.
+50% advance to start, the rest at launch. two rounds of major revisions included. vercel hosting (about inr 1,700/month) and the domain are billed to you directly, not through me.
 
-## things that keep this on track
+## what i'll need from you
 
-- brand assets, project images, and reference links within two days of kickoff
-- feedback within 48 hours at each milestone - the 4-5 weeks assumes it
-- extra pages, a cms, or anything not listed above gets quoted separately
-- revisions past the two rounds per phase are inr 1,500/hour
-- after launch i'm on bugs, not new features - those get scoped fresh
+- brand assets, project images, reference links, and a bit of context on each project
+- feedback at each stage
 
 ## next
 
-tell me what you want changed, send the assets and references over, and i'll invoice the advance so we can lock a start date. happy to walk through any of this on a call instead.
+1. approval on the plan and budget above
+2. advance invoice processed
+3. you share the projects, images, and references
+
+happy to walk through any of this on a call.

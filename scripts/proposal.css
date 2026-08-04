@@ -42,7 +42,7 @@ body {
 /* --- header --- */
 
 header {
-  padding-bottom: 18px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -75,7 +75,7 @@ h1 {
 /* --- sections --- */
 
 section {
-  margin-top: 24px;
+  margin-top: 15px;
 }
 
 h2 {
@@ -84,7 +84,7 @@ h2 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #aaa;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   /* a section may split across pages, but never right after its own label */
   break-after: avoid;
 }
@@ -155,7 +155,7 @@ ul:not(.rows) li::before {
   justify-content: space-between;
   align-items: baseline;
   gap: 20px;
-  padding: 7px 0;
+  padding: 6px 0;
   border-bottom: 1px solid #f0f0f0;
   break-inside: avoid;
 }
@@ -232,8 +232,8 @@ ol li::before {
 /* --- footer --- */
 
 footer {
-  margin-top: 30px;
-  padding-top: 14px;
+  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid #f0f0f0;
   display: flex;
   gap: 20px;

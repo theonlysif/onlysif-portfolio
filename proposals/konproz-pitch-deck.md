@@ -13,32 +13,33 @@ contact:
 
 ## what this is
 
-one master deck you pull from. built modular, so a five-page demo deck or a longer proposal is a matter of lifting slides out instead of rebuilding it every time.
+you already have the deck. this is reworking it - taking the feedback you've collected, folding in everything that's changed since it was made, and building out the parts that are missing. it stays in figma make, so you keep editing it exactly the way you do now.
 
-## what i'll design
+## what i'll do
 
-10-12 slides mapped to how the enterprise conversation actually goes - cover, problem, solution and product overview, case studies carrying the real numbers on accuracy and hours saved, service tiers for non-ai and ai, team and credibility, roi and testimonials, and a closing cta.
+about 20 slides across the existing deck: the problem and solution framing, case studies carrying the real numbers on accuracy and hours saved, service tiers for non-ai and ai, team and credibility, roi and testimonials, and the closing cta.
 
-infographic-led, so the numbers do the talking rather than paragraphs, and consistent with the konproz brand direction. you get the master file, the modular slides as editable, and the icon and illustration assets.
+infographic-led where it helps, so the numbers do the talking instead of paragraphs. modular enough that pulling a five-slide demo deck out of it is a matter of lifting slides, not rebuilding.
 
 ## what i'm not doing
 
-- **no copy.** you give me the content, i structure and lay it out
-- **no ongoing deck edits after handoff** - the whole point of building it modular is that your team can do that themselves
+- **no copy.** you give me the content, i structure it and lay it out
 
 ## timeline
 
-- content mapping and wireframe :: 1 day
-- design and infographics :: 1-2 days
-- revisions and finalisation :: 1-2 days
-- **start to handoff** :: 3-5 days
+- your feedback and what's changed since :: 2-3 days
+- working out what needs adding :: 2-3 days
+- modifying the deck :: 1 week
+- **start to handoff** :: 14 days
 
 ## what it costs
 
-- **master deck, 10-12 modular slides** :: inr 22,500
+- **reworking the deck, ~20 slides** :: inr 22,500
 
-full amount on kickoff. two rounds of revisions. we lock the file format - figma, google slides, or powerpoint - before i start, since it changes how i build it.
+full amount on kickoff. two rounds of major revisions included.
 
 ## next
 
-say go and i'll send the invoice. it's the smallest of the three, so a sensible one to start with.
+1. approval on the plan and budget above
+2. advance invoice processed
+3. you share the deck, your feedback on it, and anything new that needs to go in
