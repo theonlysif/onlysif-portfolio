@@ -8,7 +8,6 @@ filename: asif-client-thing
 contact:
   - hi@sif.fyi: mailto:hi@sif.fyi
   - sif.fyi: https://sif.fyi
-  - "[phone]": ""
 ---
 
 ## what this is
