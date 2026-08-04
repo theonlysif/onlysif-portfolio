@@ -1,0 +1,248 @@
+/* Proposal print styles.
+   Same design language as sif.fyi: Inter 300, #111 on white, hairline rules,
+   uppercase eyebrow labels, lowercase voice. Tuned for A4 + phone reading,
+   because these get forwarded over WhatsApp and opened on a 6" screen. */
+
+@page {
+  size: A4;
+  margin: 20mm 22mm 18mm;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 10.5pt;
+  font-weight: 300;
+  background: #fff;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* @page margins only apply to print, so the --html preview needs its own
+   padding to sit where the PDF will */
+@media screen {
+  body {
+    max-width: 166mm;
+    margin: 0 auto;
+    padding: 20mm 0 18mm;
+  }
+}
+
+/* --- header --- */
+
+header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-bottom: 3px;
+}
+
+.subject {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.meta {
+  margin-top: 12px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+.meta b {
+  font-weight: 300;
+  color: #888;
+}
+
+/* --- sections --- */
+
+section {
+  margin-top: 24px;
+}
+
+h2 {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 10px;
+  /* a section may split across pages, but never right after its own label */
+  break-after: avoid;
+}
+
+p {
+  color: #333;
+  font-size: 0.94rem;
+}
+
+p + p {
+  margin-top: 10px;
+}
+
+/* prose that follows a list needs air, or it reads as another list item */
+ul + p,
+ol + p,
+.rows + p {
+  margin-top: 12px;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+strong {
+  font-weight: 400;
+  color: #111;
+}
+
+/* --- bullets (.rows is also a ul, so keep the dash off it) --- */
+
+ul {
+  list-style: none;
+}
+
+ul:not(.rows) li {
+  color: #333;
+  font-size: 0.94rem;
+  padding-left: 16px;
+  position: relative;
+  break-inside: avoid;
+}
+
+ul:not(.rows) li + li {
+  margin-top: 5px;
+}
+
+ul:not(.rows) li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 1px;
+  background: #ccc;
+}
+
+/* --- label :: value rows, same pattern as the work list on the site --- */
+
+.rows {
+  list-style: none;
+}
+
+.rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 7px 0;
+  border-bottom: 1px solid #f0f0f0;
+  break-inside: avoid;
+}
+
+.rows li:first-child {
+  border-top: 1px solid #f0f0f0;
+}
+
+.rows .k {
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.rows .v {
+  font-size: 0.85rem;
+  color: #888;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* the one row that carries the number they actually care about */
+.rows li.total {
+  border-bottom: none;
+  border-top: 1px solid #ddd;
+  padding-top: 9px;
+}
+
+.rows li.total .k,
+.rows li.total .v {
+  color: #111;
+  font-size: 0.94rem;
+  font-weight: 400;
+}
+
+/* --- ordered steps --- */
+
+ol {
+  list-style: none;
+  counter-reset: step;
+}
+
+ol li {
+  counter-increment: step;
+  color: #333;
+  font-size: 0.94rem;
+  padding-left: 20px;
+  position: relative;
+}
+
+ol li + li {
+  margin-top: 5px;
+}
+
+ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+/* --- muted aside --- */
+
+.note {
+  font-size: 0.8rem;
+  color: #aaa;
+  line-height: 1.55;
+}
+
+.note + .note {
+  margin-top: 5px;
+}
+
+/* --- footer --- */
+
+footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: #888;
+  break-inside: avoid;
+}
+
+footer a {
+  text-decoration: none;
+}

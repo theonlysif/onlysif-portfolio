@@ -33,6 +33,30 @@ cp .env.example .env
 npm run dev
 ```
 
+## Proposals
+
+`proposals/*.md` build into plain PDFs in `out/`, styled to match the site — Inter,
+white, hairline rules, lowercase. Nothing fancy, they're meant to be forwarded
+over WhatsApp and read on a phone.
+
+```bash
+npx playwright install chromium   # once
+npm run proposal                  # build all
+npm run proposal konproz          # build the ones matching "konproz"
+npm run proposal -- --html        # also write HTML, for a browser preview
+```
+
+Each build prints how deep the content runs (`1.35 deep` = a page and a bit).
+Aim for 1–1.5. Copy `proposals/_template.md` to start a new one.
+
+The markdown is normal markdown plus two things:
+
+- `- label :: value` makes a two-column row, label left and value right
+- `- **label** :: value` makes that row the total line, for the number they care about
+
+`## headings` open sections, `> text` is a muted aside, and the frontmatter
+carries the title, client, date, contact links, and the output filename.
+
 ## Customising it as your own
 
 1. Replace the filesystem content in `main.js` (the `FS` object) with your own work history, projects, etc.
