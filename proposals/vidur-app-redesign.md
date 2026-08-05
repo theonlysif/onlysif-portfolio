@@ -41,7 +41,7 @@ i go to full depth on each of these - every modal, every state, loading and empt
 
 ## what it costs
 
-- **product design, full app** :: inr 1,50,000
+- **product design, full app** :: inr 1,75,000
 
 40% to start, 40% at midway design approval, 20% on handoff. two rounds of revisions per phase. delivered in figma - flag it before kickoff if you need another format.
 
