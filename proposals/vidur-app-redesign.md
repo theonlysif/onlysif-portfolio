@@ -2,7 +2,7 @@
 title: app redesign
 client: vidur
 from: asif hassan
-date: 4 august 2026
+date: 13 august 2026
 valid: 14 days
 filename: asif-vidur-app-redesign
 contact:

@@ -2,7 +2,7 @@
 title: enterprise pitch deck
 client: konproz
 from: asif hassan
-date: 4 august 2026
+date: 13 august 2026
 valid: 14 days
 filename: asif-konproz-pitch-deck
 contact:
