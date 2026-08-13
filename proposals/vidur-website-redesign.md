@@ -12,37 +12,37 @@ contact:
 
 ## what this is
 
-a full redesign of vidur.ai in figma, ready for your team to build - eight pages, give or take one.
+a redesign of vidur.ai, delivered in figma for your team to build.
 
-the site's problem isn't that it looks bad - it's had several hands on it, so hierarchy drifts page to page, and the further you scroll the more it pulls sideways. this points it at one job: getting someone into the app for their problem, fast.
+most sites want you to stay as long as possible. yours wants the opposite - land, find what matches your problem, get into the app. right now the further you scroll the more directions it sends you in. and with enough hands on it over the years, hierarchy and font sizes stopped matching page to page.
 
 ## what i'll design
 
-- **the eight pages**, plus the template blog, webinar, and anything you add later inherits
-- **a clear path into the app** - book-a-call up front rather than buried at the bottom, and a products section that shows the gst tool with room for what you ship next
-- **the design system** - built from your brand book. type, colour, and spacing stay yours; i'm making them consistent, not changing them
-- **animation direction** - what moves and why, handed over as svgs and lottie files for gsap
+- **the eight pages**, plus the template that blog and webinar pages run on
+- **getting people into the app** - book-a-call near the top, not just at the bottom, and a products section that actually shows the gst tool with room for the next one
+- **the design system** - from your brand book. same typography, same colours, held consistent across every page
+- **animation** - i'll direct what moves where, and hand over svgs and lottie files for your team to drive with gsap
 
-on content: i'll write the new sections in the brand's voice so nothing ships as placeholder. correct anything that's off - you know the domain better than i do.
+i'll write copy for the new sections so nothing sits as placeholder. change anything i get wrong.
 
 ## what i'm not doing
 
 - **no code.** figma files and assets, your team builds it
-- **nothing to the brand.** typography, colour, and logo stay exactly as they are
+- **no changes to the brand.** typography, colours, logo - all of it stays as it is
 
 ## timeline
 
 - design system and home page :: 4-5 days
 - remaining pages :: 5-6 days
-- revisions :: 2 days
+- revisions, two rounds :: 2 days
 
-home page first, so your team can build while i work the rest. that's what makes the 22nd possible.
+home page first so your team can build while i finish the rest - that's how the 22nd happens.
 
 ## what it costs
 
 - **design, 8 pages + system** :: inr 77,000
 
-50% advance to start, the rest on handoff. two rounds of major revisions included.
+50% advance to start, the rest on handoff. a page either way won't change the price.
 
 ## next
 
