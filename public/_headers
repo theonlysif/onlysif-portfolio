@@ -1,0 +1,4 @@
+# Belt and braces with the noindex meta tag in the page itself: the header
+# applies even to clients that never parse the HTML.
+/den/*
+  X-Robots-Tag: noindex, nofollow, noarchive

@@ -3,40 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>den — asif hassan</title>
-  <meta name="robots" content="noindex">
+  <title>den</title>
+
+  <!-- Keep this page out of search. Note the deliberate absence of a
+       robots.txt Disallow for /den/: robots.txt is itself public, so a
+       Disallow line would advertise the very path it is meant to hide,
+       and blocking the crawl would stop Google from ever reading the
+       noindex below, which is what actually keeps a URL out of the index.
+       Crawlable + noindex is the combination that works. Mirrored as an
+       X-Robots-Tag header in public/_headers. Not in sitemap.xml, and
+       nothing on the site links here. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+
+  <!-- Don't hand the URL to Google as a referrer when the button below is
+       clicked through to Maps. -->
+  <meta name="referrer" content="no-referrer">
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- The destination lives in exactly two places: this meta refresh (the
-       no-JS path) and DEST below. Change both together. -->
-  <meta http-equiv="refresh" content="0; url=__MAPS_URL__">
-
-  <script>
-    // Fires before the meta refresh does, so the hop is imperceptible.
-    // replace() rather than assign() — the back button should return to
-    // wherever they came from, not bounce them straight back here.
-    var DEST = "__MAPS_URL__";
-    window.location.replace(DEST);
-  </script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /* public/ is copied verbatim and never sees the build, so it can't link
+       the hashed /style.css. Base rules inlined to match the rest of the site. */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html {
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 16px; font-weight: 300; background: #fff; color: #111;
       -webkit-font-smoothing: antialiased;
     }
-    body { padding: 80px 24px; max-width: 560px; margin: 0 auto; }
-    p { font-size: 0.95rem; line-height: 1.7; color: #333; }
-    a { color: inherit; text-underline-offset: 2px; }
+    body { padding: 80px 24px 120px; }
+    main { max-width: 420px; margin: 0 auto; }
+
+    h1 { font-size: 1rem; font-weight: 400; margin-bottom: 4px; }
+    .sub { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
+
+    address {
+      font-style: normal; font-size: 1.05rem; line-height: 1.6;
+      font-weight: 400;
+    }
+    address .area { display: block; font-weight: 300; color: #444; }
+
+    .note { margin-top: 16px; font-size: 0.85rem; color: #888; line-height: 1.6; }
+
+    .actions { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+
+    .btn {
+      display: block; text-align: center; text-decoration: none;
+      padding: 14px 20px; border-radius: 10px;
+      font-size: 0.95rem; font-weight: 400;
+      background: #111; color: #fff;
+      border: 1px solid #111; cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s ease;
+    }
+    .btn:hover { opacity: 0.82; }
+    .btn.secondary { background: transparent; color: #111; border-color: #ddd; }
+
+    footer { margin-top: 64px; }
+    footer a { font-size: 0.85rem; color: #888; text-decoration: none; }
+    footer a:hover { color: #111; }
+
     @media (prefers-color-scheme: dark) {
       html { background: #111; color: #eee; }
-      p { color: #ccc; }
+      .sub, .note, footer a { color: #999; }
+      address .area { color: #bbb; }
+      .btn { background: #eee; color: #111; border-color: #eee; }
+      .btn.secondary { background: transparent; color: #eee; border-color: #333; }
+      footer a:hover { color: #eee; }
     }
   </style>
 </head>
 <body>
-  <!-- Only ever seen if both the script and the meta refresh are blocked. -->
-  <p>Taking you to the map&hellip; <a href="__MAPS_URL__">open it directly</a>.</p>
+  <main>
+    <h1>the den</h1>
+    <p class="sub">how to get here</p>
+
+    <address id="addr">
+      MSR Residency
+      <span class="area">56, 6th Cross, 27th Main Road<br>
+      HSR Layout, Bengaluru 560102</span>
+    </address>
+
+    <p class="note">I'll send you the floor and flat number separately.</p>
+
+    <div class="actions">
+      <!-- The short link resolves to the exact pin and deep-links straight
+           into the Maps app on phones, which a maps.google.com URL does not
+           reliably do. -->
+      <a class="btn" href="https://maps.app.goo.gl/FvtJd815cyxpVaZEA"
+         target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+
+      <!-- Skips the pin and starts turn-by-turn from wherever they are. -->
+      <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&destination=MSR%20Residency%2C%2056%2C%206th%20Cross%2C%2027th%20Main%20Rd%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%20560102"
+         target="_blank" rel="noopener noreferrer">Start navigation</a>
+
+      <!-- Autos and cabs here want the address pasted in, not a map pin. -->
+      <button class="btn secondary" id="copy" type="button">Copy address</button>
+    </div>
+
+    <footer><a href="/">onlysif.com</a></footer>
+  </main>
+
+  <script>
+    var ADDRESS = "MSR Residency, 56, 6th Cross, 27th Main Road, HSR Layout, Bengaluru 560102";
+    var btn = document.getElementById('copy');
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(ADDRESS).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy address'; }, 1600);
+      }).catch(function () {
+        // Clipboard API needs a secure context and can still be refused.
+        // Select the address so it can be copied by hand instead.
+        var r = document.createRange();
+        r.selectNodeContents(document.getElementById('addr'));
+        var s = window.getSelection();
+        s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Copy it from above';
+        setTimeout(function () { btn.textContent = 'Copy address'; }, 2200);
+      });
+    });
+  </script>
 </body>
 </html>
