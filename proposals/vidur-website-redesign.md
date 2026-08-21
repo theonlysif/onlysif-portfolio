@@ -40,9 +40,9 @@ home page first so your team can build while i finish the rest - that's how the 
 
 ## what it costs
 
-- **design, 8 pages + system** :: inr 77,000
+- **design, 8 pages + system** :: inr 45,000
 
-50% advance to start, the rest on handoff. a page either way won't change the price.
+30% advance to start, the rest on handoff. a page either way won't change the price.
 
 ## next
 
