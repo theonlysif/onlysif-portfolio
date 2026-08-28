@@ -82,6 +82,14 @@ function mount(messages) {
 
   const BATCH = 400;
   let i = 0;
+  let jumped = false;
+
+  function jumpTo(t) {
+    const el = document.getElementById("m-" + t);
+    if (!el) return false;
+    el.scrollIntoView({ block: "center" });
+    return true;
+  }
 
   function tick() {
     const frag = document.createDocumentFragment();
@@ -94,15 +102,19 @@ function mount(messages) {
         ? "loading " + i.toLocaleString() + " / " + total.toLocaleString()
         : total.toLocaleString() + " messages";
 
+    // jump as soon as the target exists, so a deep link lands in the first
+    // second instead of after all 11,567 rows are in. everything still to be
+    // appended sits below the target, so the position stays put.
+    if (target >= 0 && !jumped && target < i) {
+      jumped = jumpTo(target);
+    }
+
     if (i < total) {
       requestAnimationFrame(tick);
       return;
     }
 
-    if (target >= 0) {
-      const el = document.getElementById("m-" + target);
-      if (el) el.scrollIntoView({ block: "center" });
-    }
+    if (target >= 0 && !jumped) jumpTo(target);
   }
 
   tick();
