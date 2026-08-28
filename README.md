@@ -2,7 +2,7 @@
 
 A macOS Finder-style personal portfolio site. Built with Vite + vanilla JS.
 
-**Live at:** [onlysif.com](https://onlysif.com)
+**Live at:** [sif.fyi](https://www.sif.fyi/)
 
 ## What's in here
 
