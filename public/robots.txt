@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /editorial/style.css
 
-Sitemap: https://onlysif.com/sitemap.xml
+Sitemap: https://www.sif.fyi/sitemap.xml
