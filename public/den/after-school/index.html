@@ -108,12 +108,18 @@
       color: #aaa;
     }
 
-    .more { margin-top: 20px; font-size: 0.9rem; }
-    .more a {
+    .door {
+      display: block;
+      margin-top: 22px;
+      padding: 14px 16px;
+      border: 1px solid #e6e6e6;
       color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      text-decoration: none;
     }
+    .cta .door { text-decoration: none; }
+    .door:hover { border-color: #111; }
+    .door b { display: block; font-weight: 400; font-size: 0.95rem; }
+    .door span { display: block; margin-top: 5px; font-size: 0.75rem; color: #aaa; }
 
     .cta {
       margin-top: 48px;
@@ -143,6 +149,9 @@
       .sub, p { color: #bbb; }
       .art { color: #555; }
       .counts, .era, .cta { border-color: #222; }
+      .door { border-color: #2a2a2a; }
+      .door:hover { border-color: #eee; }
+      .door span { color: #666; }
       .counts div { border-color: #222; }
       .counts span, .era time, .q cite, .hint { color: #666; }
       .q { color: #eee; border-color: #333; }
@@ -225,7 +234,10 @@
       <p>i told you. you said you weren't good enough, that i deserved someone better. i refused the apology and kept the friendship. you saved the message you said no to because it was the most beautiful thing. two days later i was writing into a blocked instagram and a three-month quiet. the nuance isn't that you didn't care. it's that you cared in a different tense: future meeting, present unworthiness, no romance you could hold yet.</p>
       <a class="q" href="thread.html#m-3950">I really want to meet you? By the way<cite>you · 12 oct 2016</cite></a>
       <a class="q" href="thread.html#m-3996">I am hurt. i'm happy we'll be friends.<cite>me · the same night</cite></a>
-      <p class="more"><a href="file.html">the file i sent you that night, in full →</a></p>
+      <a class="door" href="file.html">
+        <b>the file i sent you that night, in full →</b>
+        <span>four entries, written between april and september 2016</span>
+      </a>
     </article>
 
     <article class="era">
@@ -354,6 +366,10 @@
       the whole 11,567</pre>
       <a href="thread.html">view full conversation →</a>
       <p class="hint">11,567 messages. every quote above is a deep link. you're on the right.</p>
+      <a class="door" href="file.html">
+        <b>or read the file →</b>
+        <span>everything i wrote for you before i ever said it</span>
+      </a>
     </div>
 
     <footer><a href="/">onlysif.com</a></footer>
