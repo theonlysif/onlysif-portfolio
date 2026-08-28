@@ -1,6 +1,7 @@
 const scroller = document.getElementById("scroller");
 const thread = document.getElementById("thread");
 const meta = document.getElementById("meta");
+const months = document.getElementById("months");
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
@@ -74,6 +75,31 @@ function appendBatch(messages, from, to, target, frag) {
   }
 }
 
+// one chip per month that actually has messages, pointing at the first one
+function buildMonths(messages, jump) {
+  const seen = new Set();
+  const frag = document.createDocumentFragment();
+
+  messages.forEach((m, idx) => {
+    const d = new Date(m.t);
+    const key = d.getFullYear() + "-" + d.getMonth();
+    if (seen.has(key)) return;
+    seen.add(key);
+
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = MONTHS[d.getMonth()] + " " + String(d.getFullYear()).slice(2);
+    b.addEventListener("click", () => {
+      months.querySelectorAll("button.on").forEach((n) => n.classList.remove("on"));
+      b.classList.add("on");
+      jump(idx);
+    });
+    frag.appendChild(b);
+  });
+
+  months.appendChild(frag);
+}
+
 function mount(messages) {
   const target = parseTarget();
   const total = messages.length;
@@ -83,6 +109,7 @@ function mount(messages) {
   const BATCH = 400;
   let i = 0;
   let jumped = false;
+  let pending = -1;
 
   function jumpTo(t) {
     const el = document.getElementById("m-" + t);
@@ -90,6 +117,14 @@ function mount(messages) {
     el.scrollIntoView({ block: "center" });
     return true;
   }
+
+  // a month chip can be tapped before that month has been appended; remember it
+  // and let the render loop honour it as soon as the row exists.
+  function requestJump(t) {
+    if (!jumpTo(t)) pending = t;
+  }
+
+  buildMonths(messages, requestJump);
 
   function tick() {
     const frag = document.createDocumentFragment();
@@ -107,6 +142,11 @@ function mount(messages) {
     // appended sits below the target, so the position stays put.
     if (target >= 0 && !jumped && target < i) {
       jumped = jumpTo(target);
+    }
+
+    if (pending >= 0 && pending < i && jumpTo(pending)) {
+      pending = -1;
+      jumped = true;
     }
 
     if (i < total) {

@@ -22,14 +22,16 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
+    body { display: flex; flex-direction: column; }
     html {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 16px; font-weight: 300; background: #f5f5f5; color: #111;
       -webkit-font-smoothing: antialiased;
     }
 
+    .head { flex: 0 0 auto; }
+
     .bar {
-      position: sticky; top: 0; z-index: 5;
       display: flex; align-items: baseline; justify-content: space-between;
       gap: 12px;
       padding: 14px 16px;
@@ -41,8 +43,36 @@
     .bar .who { font-size: 0.85rem; font-weight: 400; text-align: center; min-width: 0; }
     .bar .meta { font-size: 0.75rem; color: #aaa; flex-shrink: 0; }
 
+    .months {
+      display: flex;
+      gap: 6px;
+      padding: 8px 16px 10px;
+      overflow-x: auto;
+      background: rgba(245,245,245,0.94);
+      border-bottom: 1px solid #ececec;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .months::-webkit-scrollbar { display: none; }
+    .months button {
+      flex: 0 0 auto;
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #888;
+      background: transparent;
+      border: 1px solid #e2e2e2;
+      border-radius: 999px;
+      padding: 4px 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .months button:hover { color: #111; border-color: #111; }
+    .months button.on { color: #fff; background: #111; border-color: #111; }
+
     #scroller {
-      height: calc(100% - 49px);
+      flex: 1 1 auto;
+      min-height: 0;
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
@@ -120,6 +150,7 @@
 
     @media (max-width: 480px) {
       .bar .who { display: none; }
+      .months { padding: 8px 12px 10px; }
       .stack { max-width: 84%; }
       .bubble { font-size: 0.9rem; }
     }
@@ -127,6 +158,10 @@
     @media (prefers-color-scheme: dark) {
       html { background: #111; color: #eee; }
       .bar { background: rgba(17,17,17,0.94); border-bottom-color: #222; }
+      .months { background: rgba(17,17,17,0.94); border-bottom-color: #222; }
+      .months button { color: #777; border-color: #2a2a2a; }
+      .months button:hover { color: #eee; border-color: #eee; }
+      .months button.on { color: #111; background: #eee; border-color: #eee; }
       .bar a, .bar .meta, .day, .time { color: #666; }
       .bar a:hover { color: #eee; }
       .bar .who { color: #eee; }
@@ -137,10 +172,13 @@
   </style>
 </head>
 <body>
-  <div class="bar">
-    <a href="./index.html">← timeline</a>
-    <div class="who">you are on the right</div>
-    <div class="meta" id="meta">loading…</div>
+  <div class="head">
+    <div class="bar">
+      <a href="./index.html">← timeline</a>
+      <div class="who">you are on the right</div>
+      <div class="meta" id="meta">loading…</div>
+    </div>
+    <div class="months" id="months"></div>
   </div>
   <div id="scroller">
     <div id="thread"></div>
